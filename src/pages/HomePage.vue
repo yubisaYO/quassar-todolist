@@ -1,12 +1,14 @@
 <template>
-  <router-view />
+  <q-page padding>
+    <h1>Home Page</h1>
+  </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import "./css/app.scss"
 
 export default defineComponent({
-  name: 'App'
+  name: 'HomePage'
+
 })
 </script>

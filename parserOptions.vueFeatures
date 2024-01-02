@@ -1,0 +1,8 @@
+{
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "vueFeatures": {
+      "filter": false // Don't!!
+    }
+  }
+}
