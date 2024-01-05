@@ -1,6 +1,39 @@
 <template>
-  <q-page padding class="position-relative">
-    
+  <q-page padding class="">
+    <q-list padding>
+      <q-item
+        ta
+        v-ripple
+        v-for="task in tasks"
+        :key="task.id"
+        :class="task.completed ? 'bg-green-1' : 'bg-orange-1'"
+        style="width: 100%"
+      >
+        <q-item-section side top>
+          <q-checkbox v-model="task.completed" />
+        </q-item-section>
+
+        <q-item-section>
+          <q-item-label
+            :class="{ 'text-strikethrough' : task.completed}">
+            {{ task.name }}
+          </q-item-label>
+        </q-item-section>
+        <q-item-section side>
+          <div class="row align-items-center">
+            <q-icon name="event" size="18px" class="p-0" />
+            <div class="col">
+              <q-item-label caption>
+                {{ task.dueDate }}
+              </q-item-label>
+              <q-item-label caption>
+                <small>{{ task.dueTime }}</small>
+              </q-item-label>
+            </div>
+          </div>
+        </q-item-section>
+      </q-item>
+    </q-list>
     <!-- <task 
         v-for="(task, i) in tasks"
         :task="task"
@@ -41,45 +74,50 @@
 
     <p>Uppercase Message : {{ messageUpperCase }}</p>
     <p>Lowercase message : {{ messageLowerCase(message) }}</p> -->
-
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import Task from 'components/Task.vue'
+import { defineComponent } from "vue";
+import Task from "components/Task.vue";
 
 export default defineComponent({
-  name: 'IndexPage',
-  data(){
-    return{
+  name: "IndexPage",
+  data() {
+    return {
       tasks: [
         {
-          name : 'Go to shop',
-          dueDate : '2019/05/12',
-          dueTime: '18:30'
+          id: 1,
+          name: "Go to shop",
+          completed: false,
+          dueDate: "2019/05/12",
+          dueTime: "18.30",
         },
         {
-          name : 'Get bananas',
-          dueDate : '2019/05/13',
-          dueTime: '14:00'
+          id: 2,
+          name: "Get Bananas",
+          completed: false,
+          dueDate: "2019/05/12",
+          dueTime: "14.00",
         },
         {
-          name : 'Get apples',
-          dueDate : '2019/05/14',
-          dueTime: '18:30'
-        }
-      ]
-    }
+          id: 3,
+          name: "Buy Chocolate",
+          completed: false,
+          dueDate: "2019/05/12",
+          dueTime: "16.30",
+        },
+      ],
+    };
   },
-  methods:{
-    deleteTask(idx){
-      this.tasks.splice(idx, 1)
-    }
+  methods: {
+    deleteTask(idx) {
+      this.tasks.splice(idx, 1);
+    },
   },
   components: {
-    'task' : Task
-  }
+    task: Task,
+  },
   // computed: {
   //   // ini buat dia enggk ngaruh misal tombol counter dipencent dia ga load ulang lg
   //   messageUpperCase(){
@@ -119,12 +157,12 @@ export default defineComponent({
   //   console.log('updated')
   //   console.log();
   // }
-})
+});
 </script>
 
 <style>
-  .error{
-    background: pink;
-    color: red;
-  }
+.error {
+  background: pink;
+  color: red;
+}
 </style>
